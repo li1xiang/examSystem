@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="saptacims.dao.base.TbCategoryMapper" >
+  <resultMap id="BaseResultMap" type="saptacims.model.TbCategory" >
+    <id column="CATEGORY_ID" property="categoryId" jdbcType="INTEGER" />
+    <result column="CATEGORY_NAME" property="categoryName" jdbcType="VARCHAR" />
+    <result column="CATEGORY_STATUS" property="categoryStatus" jdbcType="INTEGER" />
+    <result column="CREATE_USER" property="createUser" jdbcType="INTEGER" />
+    <result column="UPDATE_USER" property="updateUser" jdbcType="INTEGER" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CATEGORY_ID, CATEGORY_NAME, CATEGORY_STATUS, CREATE_USER, UPDATE_USER, UPDATE_TIME, 
+    CREATE_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="saptacims.model.TbCategoryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_category
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_category
+    where CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_category
+    where CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="saptacims.model.TbCategoryExample" >
+    delete from tb_category
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="saptacims.model.TbCategory" >
+    insert into tb_category (CATEGORY_NAME, CATEGORY_STATUS, 
+      CREATE_USER, UPDATE_USER, UPDATE_TIME, 
+      CREATE_TIME)
+    values (#{categoryName,jdbcType=VARCHAR}, #{categoryStatus,jdbcType=INTEGER}, 
+      #{createUser,jdbcType=INTEGER}, #{updateUser,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="saptacims.model.TbCategory" >
+    insert into tb_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="categoryName != null" >
+        CATEGORY_NAME,
+      </if>
+      <if test="categoryStatus != null" >
+        CATEGORY_STATUS,
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER,
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryStatus != null" >
+        #{categoryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="saptacims.model.TbCategoryExample" resultType="java.lang.Integer" >
+    select count(*) from tb_category
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_category
+    <set >
+      <if test="record.categoryId != null" >
+        CATEGORY_ID = #{record.categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.categoryName != null" >
+        CATEGORY_NAME = #{record.categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryStatus != null" >
+        CATEGORY_STATUS = #{record.categoryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createUser != null" >
+        CREATE_USER = #{record.createUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateUser != null" >
+        UPDATE_USER = #{record.updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_category
+    set CATEGORY_ID = #{record.categoryId,jdbcType=INTEGER},
+      CATEGORY_NAME = #{record.categoryName,jdbcType=VARCHAR},
+      CATEGORY_STATUS = #{record.categoryStatus,jdbcType=INTEGER},
+      CREATE_USER = #{record.createUser,jdbcType=INTEGER},
+      UPDATE_USER = #{record.updateUser,jdbcType=INTEGER},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="saptacims.model.TbCategory" >
+    update tb_category
+    <set >
+      <if test="categoryName != null" >
+        CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryStatus != null" >
+        CATEGORY_STATUS = #{categoryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER = #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="saptacims.model.TbCategory" >
+    update tb_category
+    set CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR},
+      CATEGORY_STATUS = #{categoryStatus,jdbcType=INTEGER},
+      CREATE_USER = #{createUser,jdbcType=INTEGER},
+      UPDATE_USER = #{updateUser,jdbcType=INTEGER},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="saptacims.model.TbCategoryExample" >
+    select
+    <include refid="Base_Column_List" />
+    from tb_category
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByCategory" resultMap="BaseResultMap" parameterType="saptacims.model.TbCategory" >
+    select
+    <include refid="Base_Column_List" />
+    from tb_category
+    <where>
+    	1 = 1
+    	<if test="categoryId != null" >
+          and CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
+		</if>
+		<if test="categoryName != null" >
+		  and CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR}
+		</if>
+		<if test="categoryStatus != null" >
+		  and CATEGORY_STATUS = #{categoryStatus,jdbcType=INTEGER}
+		</if>
+		<if test="createTime != null" >
+		  and CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="createUser != null" >
+		  and CREATE_USER = #{createUser,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null" >
+		  and UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="updateUser != null" >
+		  and UPDATE_USER = #{updateUser,jdbcType=INTEGER}
+		</if>
+    </where>
+  </select>
+
+  <select id="selectCategoryByName" parameterType="String" resultType="java.lang.Integer">
+  		select count(*) from tb_category where CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getPageList" resultMap="BaseResultMap">
+  		select t.* from tb_category as t where 1=1 
+  		<if test="categoryName != null">and CATEGORY_NAME like '%${categoryName}%'</if>
+  		order by ${sort} ${order} 
+       	limit ${pageOffset},${pageSize}
+  </select>
+  
+  <select id="getPageCount" resultType="int" parameterType="map">
+  		select count(*) from tb_category where 1=1
+  		<if test="categoryName != null">and CATEGORY_NAME like '%${categoryName}%'</if>
+  </select>
+  
+  <select id="queryCategoryCount" resultType="java.lang.Integer" parameterType="saptacims.model.TbCategory">
+  		select count(*) from tb_category where CATEGORY_ID != #{categoryId,jdbcType=INTEGER} and CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="saptacims.dao.base.TbUserMapper" >
+  <resultMap id="BaseResultMap" type="saptacims.model.TbUser" >
+    <id column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="USER_CNAME" property="userCname" jdbcType="VARCHAR" />
+    <result column="USER_PASSWORD" property="userPassword" jdbcType="VARCHAR" />
+    <result column="ACCOUNT" property="account" jdbcType="VARCHAR" />
+    <result column="USER_STATUS" property="userStatus" jdbcType="INTEGER" />
+    <result column="SEX" property="sex" jdbcType="INTEGER" />
+    <result column="USER_ENAME" property="userEname" jdbcType="VARCHAR" />
+    <result column="STU_NO" property="stuNo" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="StuCLASS" property="stuclass" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_USER" property="createUser" jdbcType="INTEGER" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_USER" property="updateUser" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    USER_ID, USER_CNAME, USER_PASSWORD, ACCOUNT, USER_STATUS, SEX, USER_ENAME, 
+    STU_NO, PHONE, StuCLASS, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="saptacims.model.TbUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_USER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_USER
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from TB_USER
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="saptacims.model.TbUserExample" >
+    delete from TB_USER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="saptacims.model.TbUser" >
+    insert into TB_USER ( USER_CNAME, USER_PASSWORD, 
+      ACCOUNT, USER_STATUS, 
+      SEX, USER_ENAME, STU_NO,
+      PHONE, StuCLASS, CREATE_TIME,
+      CREATE_USER, UPDATE_TIME, UPDATE_USER)
+    values (#{userCname,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
+      #{account,jdbcType=VARCHAR}, #{userRole,jdbcType=INTEGER}, #{userStatus,jdbcType=INTEGER}, 
+      #{sex,jdbcType=INTEGER}, #{userEname,jdbcType=VARCHAR}, #{stuNo,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR}, #{stuclass,jdbcType=VARCHAR}, #{createUime,jdbcType=TIMESTAMP},
+      #{createUser,jdbcType=INTEGER}, #{updateUime,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="saptacims.model.TbUser" >
+    insert into TB_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userCname != null" >
+        USER_CNAME,
+      </if>
+      <if test="userPassword != null" >
+        USER_PASSWORD,
+      </if>
+      <if test="account != null" >
+        ACCOUNT,
+      </if>
+      <if test="userStatus != null" >
+        USER_STATUS,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="userEname != null" >
+        USER_ENAME,
+      </if>
+      <if test="stuNo != null" >
+        STU_NO,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="stuclass != null" >
+        StuCLASS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userCname != null" >
+        #{userCname,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null" >
+        #{userRole,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="userEname != null" >
+        #{userEname,jdbcType=VARCHAR},
+      </if>
+      <if test="stuNo != null" >
+        #{stuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="stuclass != null" >
+        #{stuclass,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateTser,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="saptacims.model.TbUserExample" resultType="java.lang.Integer" >
+    select count(*) from TB_USER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TB_USER
+    <set >
+      <if test="record.userCname != null" >
+        USER_CNAME = #{record.userCname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userPassword != null" >
+        USER_PASSWORD = #{record.userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null" >
+        ACCOUNT = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userStatus != null" >
+        USER_STATUS = #{record.userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.sex != null" >
+        SEX = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.userEname != null" >
+        USER_ENAME = #{record.userEname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stuNo != null" >
+        STU_NO = #{record.stuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        PHONE = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stuclass != null" >
+        StuCLASS = #{record.stuclass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null" >
+        CREATE_USER = #{record.createUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null" >
+        UPDATE_USER = #{record.updateUser,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TB_USER
+    set USER_ID = #{record.userId,jdbcType=INTEGER},
+      USER_CNAME = #{record.userCname,jdbcType=VARCHAR},
+      USER_PASSWORD = #{record.userPassword,jdbcType=VARCHAR},
+      ACCOUNT = #{record.account,jdbcType=VARCHAR},
+      USER_STATUS = #{record.userStatus,jdbcType=INTEGER},
+      SEX = #{record.sex,jdbcType=INTEGER},
+      USER_ENAME = #{record.userEname,jdbcType=VARCHAR},
+      STU_NO = #{record.stuNo,jdbcType=VARCHAR},
+      PHONE = #{record.phone,jdbcType=VARCHAR},
+      StuCLASS = #{record.stuclass,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      CREATE_USER = #{record.createUser,jdbcType=INTEGER},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{record.updateUser,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="saptacims.model.TbUser" >
+    update TB_USER
+    <set >
+      <if test="userCname != null" >
+        USER_CNAME = #{userCname,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        ACCOUNT = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null" >
+        USER_STATUS = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="userEname != null" >
+        USER_ENAME = #{userEname,jdbcType=VARCHAR},
+      </if>
+      <if test="stuNo != null" >
+        STU_NO = #{stuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="stuclass != null" >
+        StuCLASS = #{stuclass,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER = #{updateUser,jdbcType=INTEGER},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="saptacims.model.TbUser" >
+    update TB_USER
+    set USER_CNAME = #{userCname,jdbcType=VARCHAR},
+      USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+      ACCOUNT = #{account,jdbcType=VARCHAR},
+      USER_STATUS = #{userStatus,jdbcType=INTEGER},
+      SEX = #{sex,jdbcType=INTEGER},
+      USER_ENAME = #{userEname,jdbcType=VARCHAR},
+      STU_NO = #{stuNo,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      StuCLASS = #{stuclass,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      CREATE_USER = #{createUser,jdbcType=INTEGER},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{updateUser,jdbcType=INTEGER}
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="qryUserByIdPwd" resultType="java.lang.Integer"  parameterType="saptacims.model.TbUser">
+  	select count(*) from TB_USER where USER_PASSWORD = #{userPassword,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUser" resultMap="BaseResultMap" parameterType="saptacims.model.TbUser">
+  	select 
+  	<include refid="Base_Column_List" />
+    from TB_USER
+    <where>
+    	1 = 1
+    	<if test="userId != null" >
+          and USER_ID = #{userId,jdbcType=INTEGER}
+		</if>
+		<if test="userCname != null" >
+		  and USER_CNAME = #{userCname,jdbcType=VARCHAR}
+		</if>
+		<if test="userPassword != null" >
+		  and USER_PASSWORD = #{userPassword,jdbcType=VARCHAR}
+		</if>
+		<if test="account != null" >
+		  and ACCOUNT = #{account,jdbcType=VARCHAR}
+		</if>
+		<if test="userStatus != null" >
+		  and USER_STATUS = #{userStatus,jdbcType=INTEGER}
+		</if>
+		<if test="sex != null" >
+		  and SEX = #{sex,jdbcType=INTEGER}
+		</if>
+		<if test="userEname != null" >
+		  and USER_ENAME = #{userEname,jdbcType=VARCHAR}
+		</if>
+		<if test="stuNo != null" >
+		  and STU_NO = #{stuNo,jdbcType=VARCHAR}
+		</if>
+		<if test="phone != null" >
+		  and PHONE = #{phone,jdbcType=VARCHAR}
+		</if>
+		<if test="stuclass != null" >
+		  and StuCLASS = #{stuclass,jdbcType=VARCHAR}
+		</if>
+		<if test="createTime != null" >
+		  and CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="createUser != null" >
+		  and CREATE_USER = #{createUser,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null" >
+		  and UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="updateUser != null" >
+		  and UPDATE_USER = #{updateUser,jdbcType=INTEGER}
+		</if>
+    </where>
+  </select>
+  <select id="selectByAccount" resultMap="BaseResultMap" parameterType="String">
+  	select 
+  	<include refid="Base_Column_List" />
+    from TB_USER where ACCOUNT = #{account,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getPageList" resultMap="BaseResultMap">
+        select t.* from TB_USER as t where 1=1 
+        <if test="account != null"> and t.ACCOUNT like '%${account}%' </if>
+        <if test="stuNo != null"> and t.STU_NO like '%${stuNo}%' </if>
+            order by ${sort} ${order} 
+       	 	limit ${pageOffset},${pageSize}
+    </select>
+    
+	<select id="getPageCount" parameterType="map" resultType="int">
+        select count(*) from TB_USER where 1=1 
+        <if test="account != null"> and ACCOUNT like '%${account}%' </if>
+        <if test="userCname != null"> and USER_CNAME like  '%${userCname}%'  </if>  
+    </select>
+
+	<select id="queryUsernameById" parameterType="java.lang.Integer" resultType="String">
+		select USER_CNAME from TB_USER where USER_ID = #{userId,jdbcType=INTEGER}
+	</select>
+	
+	<select id="queryAccountById" parameterType="saptacims.model.TbUser" resultType="int">
+		select count(*) from TB_USER where USER_ID != #{userId,jdbcType=INTEGER} AND Account = #{account,jdbcType=VARCHAR}
+	</select>
+	
+	 <select id="getUserList" resultMap="BaseResultMap">
+        select t.* from TB_USER as t where 1=1 
+        <if test="account != null"> and t.ACCOUNT like '%${account}%' </if>
+        <if test="userCname != null"> and t.USER_CNAME like '%${userCname}%' </if>
+        	and t.USER_STATUS = #{userStatus,jdbcType=INTEGER}  
+            order by ${sort} ${order} 
+       	 	limit ${pageOffset},${pageSize}
+    </select>
+    
+    <select id="getUserCount" parameterType="map" resultType="int">
+        select count(*) from TB_USER where 1=1 
+        <if test="account != null"> and ACCOUNT like '%${account}%' </if>
+        <if test="userCname != null"> and USER_CNAME like  '%${userCname}%'  </if>
+        	and USER_STATUS = #{userStatus,jdbcType=INTEGER}   
+    </select>
+</mapper>

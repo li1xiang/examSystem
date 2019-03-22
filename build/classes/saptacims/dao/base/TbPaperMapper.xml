@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="saptacims.dao.base.TbPaperMapper">
+  <resultMap id="BaseResultMap" type="saptacims.model.TbPaper">
+    <id column="PAPER_ID" jdbcType="INTEGER" property="paperId" />
+    <result column="EXAMINATION_ID" jdbcType="INTEGER" property="examinationId" />
+    <result column="PAPER_USER" jdbcType="INTEGER" property="paperUser" />
+    <result column="PAPER_START_TIME" jdbcType="TIMESTAMP" property="paperStartTime" />
+    <result column="PAPER_END_TIME" jdbcType="TIMESTAMP" property="paperEndTime" />
+    <result column="SCORE" jdbcType="INTEGER" property="score" />
+    <result column="SCORE_REMARKS" jdbcType="VARCHAR" property="scoreRemarks" />
+    <result column="MARKING_MAN" jdbcType="INTEGER" property="markingMan" />
+    <result column="SUBMIT_STATUS" jdbcType="INTEGER" property="submitStatus" />
+    <result column="CREATE_USER" jdbcType="INTEGER" property="createUser" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_USER" jdbcType="INTEGER" property="updateUser" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap id="VoResultMap" type="saptacims.vo.base.TbPaperVo">
+    <id column="PAPER_ID" jdbcType="INTEGER" property="paperId" />
+    <result column="EXAMINATION_ID" jdbcType="INTEGER" property="examinationId" />
+    <result column="PAPER_USER" jdbcType="INTEGER" property="paperUser" />
+    <result column="PAPER_START_TIME" jdbcType="TIMESTAMP" property="paperStartTime" />
+    <result column="PAPER_END_TIME" jdbcType="TIMESTAMP" property="paperEndTime" />
+    <result column="SCORE" jdbcType="INTEGER" property="score" />
+    <result column="SCORE_REMARKS" jdbcType="VARCHAR" property="scoreRemarks" />
+    <result column="MARKING_MAN" jdbcType="INTEGER" property="markingMan" />
+    <result column="SUBMIT_STATUS" jdbcType="INTEGER" property="submitStatus" />
+    <result column="CREATE_USER" jdbcType="INTEGER" property="createUser" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_USER" jdbcType="INTEGER" property="updateUser" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="EXAMINATION_NAME" jdbcType="VARCHAR" property="examinationName" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    PAPER_ID, EXAMINATION_ID, PAPER_USER, PAPER_START_TIME, PAPER_END_TIME, SCORE, SCORE_REMARKS, MARKING_MAN, SUBMIT_STATUS, 
+    CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME
+  </sql>
+  <select id="selectByExample" parameterType="saptacims.model.TbPaperExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_paper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_paper
+    where PAPER_ID = #{paperId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_paper
+    where PAPER_ID = #{paperId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="saptacims.model.TbPaperExample">
+    delete from tb_paper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="saptacims.model.TbPaper">
+    insert into tb_paper (PAPER_ID, EXAMINATION_ID, PAPER_USER, 
+      PAPER_START_TIME, PAPER_END_TIME, SCORE, 
+      SCORE_REMARKS, CREATE_USER, CREATE_TIME, 
+      UPDATE_USER, UPDATE_TIME)
+    values (#{paperId,jdbcType=INTEGER}, #{examinationId,jdbcType=INTEGER}, #{paperUser,jdbcType=INTEGER}, 
+      #{paperStartTime,jdbcType=TIMESTAMP}, #{paperEndTime,jdbcType=TIMESTAMP}, #{score,jdbcType=INTEGER}, 
+      #{scoreRemarks,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="saptacims.model.TbPaper">
+    insert into tb_paper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paperId != null">
+        PAPER_ID,
+      </if>
+      <if test="examinationId != null">
+        EXAMINATION_ID,
+      </if>
+      <if test="paperUser != null">
+        PAPER_USER,
+      </if>
+      <if test="paperStartTime != null">
+        PAPER_START_TIME,
+      </if>
+      <if test="paperEndTime != null">
+        PAPER_END_TIME,
+      </if>
+      <if test="score != null">
+        SCORE,
+      </if>
+      <if test="scoreRemarks != null">
+        SCORE_REMARKS,
+      </if>
+      <if test="markingMan != null">
+        MARKING_MAN,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paperId != null">
+        #{paperId,jdbcType=INTEGER},
+      </if>
+      <if test="examinationId != null">
+        #{examinationId,jdbcType=INTEGER},
+      </if>
+      <if test="paperUser != null">
+        #{paperUser,jdbcType=INTEGER},
+      </if>
+      <if test="paperStartTime != null">
+        #{paperStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paperEndTime != null">
+        #{paperEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="scoreRemarks != null">
+        #{scoreRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="markingMan != null">
+        #{markingMan,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="saptacims.model.TbPaperExample" resultType="java.lang.Long">
+    select count(*) from tb_paper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_paper
+    <set>
+      <if test="record.paperId != null">
+        PAPER_ID = #{record.paperId,jdbcType=INTEGER},
+      </if>
+      <if test="record.examinationId != null">
+        EXAMINATION_ID = #{record.examinationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.paperUser != null">
+        PAPER_USER = #{record.paperUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.paperStartTime != null">
+        PAPER_START_TIME = #{record.paperStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.paperEndTime != null">
+        PAPER_END_TIME = #{record.paperEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.score != null">
+        SCORE = #{record.score,jdbcType=INTEGER},
+      </if>
+      <if test="record.scoreRemarks != null">
+        SCORE_REMARKS = #{record.scoreRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUser != null">
+        CREATE_USER = #{record.createUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null">
+        UPDATE_USER = #{record.updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null">
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_paper
+    set PAPER_ID = #{record.paperId,jdbcType=INTEGER},
+      EXAMINATION_ID = #{record.examinationId,jdbcType=INTEGER},
+      PAPER_USER = #{record.paperUser,jdbcType=INTEGER},
+      PAPER_START_TIME = #{record.paperStartTime,jdbcType=TIMESTAMP},
+      PAPER_END_TIME = #{record.paperEndTime,jdbcType=TIMESTAMP},
+      SCORE = #{record.score,jdbcType=INTEGER},
+      SCORE_REMARKS = #{record.scoreRemarks,jdbcType=VARCHAR},
+      CREATE_USER = #{record.createUser,jdbcType=INTEGER},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{record.updateUser,jdbcType=INTEGER},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="saptacims.model.TbPaper">
+    update tb_paper
+    <set>
+      <if test="examinationId != null">
+        EXAMINATION_ID = #{examinationId,jdbcType=INTEGER},
+      </if>
+      <if test="paperUser != null">
+        PAPER_USER = #{paperUser,jdbcType=INTEGER},
+      </if>
+      <if test="paperStartTime != null">
+        PAPER_START_TIME = #{paperStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paperEndTime != null">
+        PAPER_END_TIME = #{paperEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        SCORE = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="scoreRemarks != null">
+        SCORE_REMARKS = #{scoreRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="markingMan != null">
+        MARKING_MAN = #{markingMan,jdbcType=INTEGER},
+      </if>
+      <if test="submitStatus != null">
+        SUBMIT_STATUS = #{submitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null">
+        CREATE_USER = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER = #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PAPER_ID = #{paperId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="saptacims.model.TbPaper">
+    update tb_paper
+    set EXAMINATION_ID = #{examinationId,jdbcType=INTEGER},
+      PAPER_USER = #{paperUser,jdbcType=INTEGER},
+      PAPER_START_TIME = #{paperStartTime,jdbcType=TIMESTAMP},
+      PAPER_END_TIME = #{paperEndTime,jdbcType=TIMESTAMP},
+      SCORE = #{score,jdbcType=INTEGER},
+      SCORE_REMARKS = #{scoreRemarks,jdbcType=VARCHAR},
+      SUBMIT_STATUS = #{submitStatus,jdbcType=INTEGER},
+      CREATE_USER = #{createUser,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{updateUser,jdbcType=INTEGER},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where PAPER_ID = #{paperId,jdbcType=INTEGER}
+  </update>
+  
+  <insert id="insertReturnKey" parameterType="saptacims.model.TbPaper">
+  	<selectKey resultType="java.lang.Integer" keyProperty="paperId" order="AFTER">
+  		select  LAST_INSERT_ID()
+  	</selectKey>
+    insert into tb_paper (EXAMINATION_ID, PAPER_USER, 
+      PAPER_START_TIME, PAPER_END_TIME, SCORE, 
+      SCORE_REMARKS,SUBMIT_STATUS, CREATE_USER, CREATE_TIME, 
+      UPDATE_USER, UPDATE_TIME)
+    values (#{examinationId,jdbcType=INTEGER}, #{paperUser,jdbcType=INTEGER}, 
+      #{paperStartTime,jdbcType=TIMESTAMP}, #{paperEndTime,jdbcType=TIMESTAMP}, #{score,jdbcType=INTEGER}, 
+      #{scoreRemarks,jdbcType=VARCHAR}, #{submitStatus,jdbcType=INTEGER}, #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <select id="selectByExaminationIdAndPaperUser" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/> from TB_PAPER
+  	where PAPER_USER = #{paperUser,jdbcType=INTEGER}
+  	and EXAMINATION_ID = #{examinationId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getPaperList" resultMap="VoResultMap">
+ 	select 
+  		*
+  	from TB_PAPER p
+  	left join tb_interviewer inter on p.PAPER_USER = inter.INTERVIEWER_ID
+  	left join tb_examination e on p.EXAMINATION_ID = e.EXAMINATION_ID
+  	where 1=1
+  	<if test="name != null and name != ''"> and NAME like '%${name}%' </if>
+  	<if test="phone != null and phone != ''"> and PHONE =#{phone} </if>
+  	<if test="examinationName != null and examinationName != ''"> and e.EXAMINATION_NAME like '%${examinationName}%'</if>
+  	<if test="submitStatus != null"> and SUBMIT_STATUS = #{submitStatus,jdbcType=INTEGER}</if>
+  	order by PAPER_START_TIME desc
+    limit ${pageOffset},${pageSize}
+  </select>
+  
+  <select id="getPaperListCount" resultType="int">
+  	select count(1) from TB_PAPER p
+  	left join tb_interviewer inter on p.PAPER_USER = inter.INTERVIEWER_ID
+  	left join tb_examination e on p.EXAMINATION_ID = e.EXAMINATION_ID
+  	where 1=1
+  	<if test="name != null and name != ''"> and NAME like '%${name}%' </if>
+  	<if test="phone != null and phone != ''"> and PHONE =#{phone} </if>
+  	<if test="examinationName != null and examinationName != ''"> and e.EXAMINATION_NAME like '%${examinationName}%'</if>
+  	<if test="submitStatus != null "> and SUBMIT_STATUS = #{submitStatus,jdbcType=INTEGER}</if>
+  </select>
+  <select id="selectByPaperUser" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/> from tb_paper where paper_user = #{paperUser} and examination_id=#{examinationId}
+  </select>
+</mapper>

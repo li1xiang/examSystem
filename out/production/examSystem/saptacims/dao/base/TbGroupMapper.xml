@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="saptacims.dao.base.TbGroupMapper" >
+  <resultMap id="BaseResultMap" type="saptacims.model.TbGroup" >
+    <id column="GROUP_ID" property="groupId" jdbcType="INTEGER" />
+    <result column="GROUP_NAME" property="groupName" jdbcType="VARCHAR" />
+    <result column="GROUP_STATUS" property="groupStatus" jdbcType="INTEGER" />
+    <result column="CREATE_USER" property="createUser" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_USER" property="updateUser" jdbcType="INTEGER" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="StuCLASS" property="stuclass" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    GROUP_ID, GROUP_NAME, GROUP_STATUS, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME, 
+    StuCLASS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="saptacims.model.TbGroupExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_group
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_group
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_group
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="saptacims.model.TbGroupExample" >
+    delete from tb_group
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="saptacims.model.TbGroup" >
+    insert into tb_group (GROUP_NAME, GROUP_STATUS, 
+      CREATE_USER, CREATE_TIME, UPDATE_USER, 
+      UPDATE_TIME, StuCLASS)
+    values (#{groupName,jdbcType=VARCHAR}, #{groupStatus,jdbcType=INTEGER}, 
+      #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{stuclass,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="saptacims.model.TbGroup" >
+    insert into tb_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="groupName != null" >
+        GROUP_NAME,
+      </if>
+      <if test="groupStatus != null" >
+        GROUP_STATUS,
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="stuclass != null" >
+        StuCLASS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupStatus != null" >
+        #{groupStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stuclass != null" >
+        #{stuclass,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="saptacims.model.TbGroupExample" resultType="java.lang.Integer" >
+    select count(*) from tb_group
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_group
+    <set >
+      <if test="record.groupId != null" >
+        GROUP_ID = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupName != null" >
+        GROUP_NAME = #{record.groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupStatus != null" >
+        GROUP_STATUS = #{record.groupStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createUser != null" >
+        CREATE_USER = #{record.createUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null" >
+        UPDATE_USER = #{record.updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.stuclass != null" >
+        StuCLASS = #{record.stuclass,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_group
+    set GROUP_ID = #{record.groupId,jdbcType=INTEGER},
+      GROUP_NAME = #{record.groupName,jdbcType=VARCHAR},
+      GROUP_STATUS = #{record.groupStatus,jdbcType=INTEGER},
+      CREATE_USER = #{record.createUser,jdbcType=INTEGER},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{record.updateUser,jdbcType=INTEGER},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      StuCLASS = #{record.stuclass,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="saptacims.model.TbGroup" >
+    update tb_group
+    <set >
+      <if test="groupName != null" >
+        GROUP_NAME = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupStatus != null" >
+        GROUP_STATUS = #{groupStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER = #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stuclass != null" >
+        StuCLASS = #{stuclass,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="saptacims.model.TbGroup" >
+    update tb_group
+    set GROUP_NAME = #{groupName,jdbcType=VARCHAR},
+      GROUP_STATUS = #{groupStatus,jdbcType=INTEGER},
+      CREATE_USER = #{createUser,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{updateUser,jdbcType=INTEGER},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      StuCLASS = #{stuclass,jdbcType=VARCHAR}
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="saptacims.model.TbGroupExample" >
+    select
+    <include refid="Base_Column_List" />
+    from tb_group
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectGroupByName" parameterType="String" resultType="java.lang.Integer">
+  		select count(*) from tb_group where GROUP_NAME = #{groupName,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="getPageList" resultMap="BaseResultMap">
+  		select t.* from tb_group as t where 1=1 
+  		<if test="groupName != null">and GROUP_NAME like '%${groupName}%'</if>
+  		order by ${sort} ${order} 
+       	limit ${pageOffset},${pageSize}
+  </select>
+  
+  <select id="getPageCount" resultType="int" parameterType="map">
+  		select count(*) from tb_group where 1=1
+  		<if test="groupName != null">and GROUP_NAME like '%${groupName}%'</if>
+  </select>
+   <select id="selectByGroup" resultMap="BaseResultMap" parameterType="saptacims.model.TbGroup" >
+    select
+    <include refid="Base_Column_List" />
+    from tb_group
+    <where>
+    	1 = 1
+    	<if test="groupId != null" >
+          and GROUP_ID = #{groupId,jdbcType=INTEGER}
+		</if>
+		<if test="groupName != null" >
+		  and GROUP_NAME = #{groupName,jdbcType=VARCHAR}
+		</if>
+		<if test="groupStatus != null" >
+		  and GROUP_STATUS = #{groupStatus,jdbcType=INTEGER}
+		</if>
+		<if test="createTime != null" >
+		  and CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="createUser != null" >
+		  and CREATE_USER = #{createUser,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null" >
+		  and UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="updateUser != null" >
+		  and UPDATE_USER = #{updateUser,jdbcType=INTEGER}
+		</if>
+    </where>
+  </select>
+  
+  <select id="queryGroupCount" resultType="java.lang.Integer" parameterType="saptacims.model.TbGroup">
+  		select count(*) from tb_group where GROUP_ID != #{groupId,jdbcType=INTEGER} and GROUP_NAME = #{groupName,jdbcType=VARCHAR}
+  </select>
+</mapper>
