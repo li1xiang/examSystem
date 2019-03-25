@@ -71,7 +71,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="san-row section-f-row">
+							<div class="san-row section-f-row" id="student_id_flag">
 								<div class="san-col-2" align="right">学号</div>
 								<div class="san-col-3">
 									<input id="stuNoMod" name="stuNo" class="easyui-textbox"
@@ -133,6 +133,23 @@
 					$("#userStatusMod").combobox("setValue", "${tbUserVo.tbUser.userStatus}");
 				}
 			});
+       if("${tbUserVo.roleName}"!="学生"){
+           $("#student_id_flag").hide()
+            }else{
+                $("#student_id_flag").show()
+            }
+            //初始化状态下拉框
+            $("#stuClass").combobox({
+                valueField:'id', //值字段
+                textField:'text', //显示的字段
+                url:'user/classList',
+                panelHeight:'auto',
+                required:false,
+                editable:false,//不可编辑，只能选择
+                onLoadSuccess:function(){
+                    $("#stuClass").combobox("setValue", "${tbUserVo.tbUser.stuclass}");
+                }
+            });
 
             //初始化状态下拉框
             $("#roleNameMod").combobox({

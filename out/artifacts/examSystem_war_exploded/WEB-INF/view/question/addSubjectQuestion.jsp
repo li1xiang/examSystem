@@ -10,7 +10,7 @@
 	<div class="sub-page">
 		<div class="section-a">
 			<div class="section-a-head section-a-head-fixed">
-				<div class="section-a-title h5">题库管理 > 主观题录入 </div>
+				<div class="section-a-title h5">题库管理 > 问答题录入 </div>
 			</div>
 			<!-- section-a-head end -->
 
@@ -24,7 +24,7 @@
 							<div title="题目录入" style="padding: 10px" class="section-f-body">
 								<div class="san-row section-f-row">
 								<input id="questionType" name="questionType" type="hidden" value=0 >
-									<div class="san-col-1" align="right">类别</div>
+									<div class="san-col-1" align="right">年级</div>
 									<div class="san-col-2">
 										<select id="categoryId" name="categoryId"
 											class="easyui-combobox" style="width: 100%;"
@@ -32,7 +32,7 @@
 										</select>
 									</div>
 									<div class="san-col-1"></div>
-									<div class="san-col-1" align="right">群组</div>
+									<div class="san-col-1" align="right">科目</div>
 									<div class="san-col-2">
 										<select id="groupId" name="groupId" class="easyui-combobox"
 											style="width: 100%;"
@@ -171,10 +171,10 @@
 					showFailureMsgDia("分数取值为1~100之间!");
 					return;
 				}
-				if ($("#subject").val().trim()==''&&$("#questionFile").filebox('getValue')=='') {
+				/*if ($("#subject").val().trim()==''&&$("#questionFile").filebox('getValue')=='') {
 					showFailureMsgDia("请填写题目或上传一个附件!");
 					return;
-				}
+				}*/
 				//校验答案
 				if($("#answer").val().trim()==''&&$("#answerFile").filebox('getValue')==''){
 					showFailureMsgDia("请填写答案或上传一个附件!");

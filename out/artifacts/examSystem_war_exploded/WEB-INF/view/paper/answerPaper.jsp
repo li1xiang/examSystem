@@ -54,19 +54,6 @@
 										<c:if test="${(status.index) mod 10 == 9}">
 								</tr>
 								</c:if>
-								<%--< c:if test="${(status.count) mod 10 != 1}">
-											<td width="5px" align="right">${status.index+1 }.</td>
-											<td align="left"><input type="radio" id="questionId"
-												onClick="showQuestion(${question})" name="questionId"
-												value="${question}"></td>
-										</c:if>
-										<c:if test="${(status.count) mod 10 == 1}">
-											<tr>
-												<td width="5px" align="right">${status.index+1 }.</td>
-												<td><input type="radio" id="questionId"
-													onClick="showQuestion(${question})" name="questionId"
-													value="${question}"></td>
-										</c:if> --%>
 								</c:forEach>
 								</tr>
 							</table>

@@ -18,7 +18,7 @@ public class TbGroup implements Serializable{
 
     private Date updateTime;
 
-    private String stuclass;
+    private String remark;
 
     public Integer getGroupId() {
         return groupId;
@@ -77,10 +77,10 @@ public class TbGroup implements Serializable{
     }
 
     public String getRemark() {
-        return stuclass;
+        return remark;
     }
 
-    public void setRemark(String stuclass) {
-        this.stuclass = stuclass == null ? null : stuclass.trim();
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 }

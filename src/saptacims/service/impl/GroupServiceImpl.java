@@ -1,24 +1,23 @@
 package saptacims.service.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import saptacims.cst.Status;
 import saptacims.dao.base.TbGroupMapper;
 import saptacims.dao.base.TbUserMapper;
 import saptacims.model.TbGroup;
 import saptacims.model.TbGroupExample;
-import saptacims.model.TbUpdateGroup;
 import saptacims.model.TbGroupExample.Criteria;
+import saptacims.model.TbUpdateGroup;
 import saptacims.service.IGroupService;
 import saptacims.vo.page.Pager;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class GroupServiceImpl implements IGroupService {
@@ -33,8 +32,7 @@ public class GroupServiceImpl implements IGroupService {
 	
 	@Override
 	public boolean saveGroup(TbGroup group) throws Exception{
-		LOGGER.info("---------群组新增-------------");
-		
+		LOGGER.info("---------科目新增-------------");
 		group.setCreateTime(new Date());
 		group.setUpdateTime(new Date());
 		group.setGroupStatus(Status.ENABLE);
@@ -49,7 +47,7 @@ public class GroupServiceImpl implements IGroupService {
 
 	@Override
 	public int deleteGroup(TbGroup deleteGroup,Integer userId) {
-		LOGGER.info("--------群组删除-------------");
+		LOGGER.info("-------科目删除-------------");
 		int tag = 0;
 		try {
 			deleteGroup.setUpdateTime(new Date());

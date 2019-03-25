@@ -13,7 +13,7 @@
 			<div class="section-a-head section-a-head-fixed">
 				<div class="san-row">
 					<div class="san-col-9">
-						<div class="section-a-title h5">基础信息管理 > 群组管理 </div>
+						<div class="section-a-title h5">题库管理 > 科目管理 </div>
 					</div>
 					
 				</div>
@@ -32,7 +32,7 @@
 								<div class="san-row">
 								<form id="queryForm" >
 									<div class="san-col-2">
-										<div>群组名称</div>
+										<div>科目名称</div>
 										<input class="easyui-textbox" name="groupName" style="width: 100%;">
 									</div>
 									
@@ -102,7 +102,7 @@
 										},
 										{
 											field : "groupName",
-											title : "群组名称",
+											title : "科目名称",
 											halign : "center",
 											width : "40%",
 											align:'center',
@@ -110,7 +110,7 @@
 										},
 										{
 											field : "groupStatus",
-											title : "群组状态",
+											title : "科目状态",
 											halign : "center",
 											width : "40%",
 											align:'center',

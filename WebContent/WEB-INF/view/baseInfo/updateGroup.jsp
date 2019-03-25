@@ -74,7 +74,7 @@
 							<div class="san-row section-f-row">
 								<div class="san-col-2" align="right">备注</div>
 								<div class="san-col-3">
-									<input class="easyui-textbox" name="stuclass" data-options="multiline:true,validType:'length[0,255]'" value="${group.stuclass}" style="width:550px;height:100px">
+									<input class="easyui-textbox" name="remark" data-options="multiline:true,validType:'length[0,255]'" value="${group.remark}" style="width:550px;height:100px">
 								</div>
 							</div>
 							<!-- san-row end -->
