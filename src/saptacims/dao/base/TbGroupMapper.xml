@@ -9,7 +9,7 @@
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
     <result column="UPDATE_USER" property="updateUser" jdbcType="INTEGER" />
     <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="StuCLASS" property="stuclass" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +71,7 @@
   </sql>
   <sql id="Base_Column_List" >
     GROUP_ID, GROUP_NAME, GROUP_STATUS, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME, 
-    StuCLASS
+    REMARK
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="saptacims.model.TbGroupExample" >
     select
@@ -106,10 +106,10 @@
   <insert id="insert" parameterType="saptacims.model.TbGroup" >
     insert into tb_group (GROUP_NAME, GROUP_STATUS, 
       CREATE_USER, CREATE_TIME, UPDATE_USER, 
-      UPDATE_TIME, StuCLASS)
+      UPDATE_TIME, REMARK)
     values (#{groupName,jdbcType=VARCHAR}, #{groupStatus,jdbcType=INTEGER}, 
       #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=INTEGER}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{stuclass,jdbcType=VARCHAR})
+      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="saptacims.model.TbGroup" >
     insert into tb_group
@@ -132,8 +132,8 @@
       <if test="updateTime != null" >
         UPDATE_TIME,
       </if>
-      <if test="stuclass != null" >
-        StuCLASS,
+      <if test="remark != null" >
+        REMARK,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -158,8 +158,8 @@
       <if test="updateTime != null" >
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="stuclass != null" >
-        #{stuclass,jdbcType=VARCHAR},
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -193,8 +193,8 @@
       <if test="record.updateTime != null" >
         UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.stuclass != null" >
-        StuCLASS = #{record.stuclass,jdbcType=VARCHAR},
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -210,7 +210,7 @@
       CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
       UPDATE_USER = #{record.updateUser,jdbcType=INTEGER},
       UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
-      StuCLASS = #{record.stuclass,jdbcType=VARCHAR}
+      REMARK = #{record.remark,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -236,8 +236,8 @@
       <if test="updateTime != null" >
         UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="stuclass != null" >
-        StuCLASS = #{stuclass,jdbcType=VARCHAR},
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
     where GROUP_ID = #{groupId,jdbcType=INTEGER}
@@ -250,7 +250,7 @@
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       UPDATE_USER = #{updateUser,jdbcType=INTEGER},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
-      StuCLASS = #{stuclass,jdbcType=VARCHAR}
+      REMARK = #{remark,jdbcType=VARCHAR}
     where GROUP_ID = #{groupId,jdbcType=INTEGER}
   </update>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="saptacims.model.TbGroupExample" >

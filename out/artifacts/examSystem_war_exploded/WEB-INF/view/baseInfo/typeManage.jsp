@@ -14,7 +14,7 @@
 			<div class="section-a-head section-a-head-fixed">
 				<div class="san-row">
 					<div class="san-col-9">
-						<div class="section-a-title h5">基础信息管理 >类别管理</div>
+						<div class="section-a-title h5">基础信息管理 >年级管理</div>
 					</div>
 					
 				</div>
@@ -34,7 +34,7 @@
 								<div class="san-row">
 								<form id="queryForm" >
 									<div class="san-col-2">
-										<div>类别名称</div>
+										<div>年级名称</div>
 										<input class="easyui-textbox" name="categoryName" style="width: 100%;">
 									</div>
 									
@@ -78,31 +78,6 @@
 	<!-- <div id="subpage-list-ecc" class="easyui-calendar"></div> -->
 
 	<script type="text/javascript">
-		<%--
-		//新增类别
-		function savaCategory(){
-				$.post('category/saveCategory',
-						{'categoryName':$("#categoryName").val()},
-						function(result){
-							if(result.saveFlag){
-								$('#dlg').dialog('close');  
-								$('#categoryTable').datagrid('reload');
-								
-								$.messager.alert("结果",result.msg,'info',function(){
-									return;
-								});
-								 
-							}else{
-								
-								$("ErrorMsg").html(result.msg).css('color','red');
-								$.messager.alert("警告",result.msg,'info',function(){
-									return;
-								});
-							}
-						},'json');
-		}
-	 --%>
-		
 		$(function() {
 			$.parser.parse("#main-page-body-content");
 			
@@ -121,7 +96,7 @@
 								columns : [ [
 										{
 											field : "categoryId",
-											title : "类别ID",
+											title : "年级ID",
 											halign : "center",
 											width : "40%",
 											align:'center',
@@ -129,7 +104,7 @@
 										},
 										{
 											field : "categoryName",
-											title : "类别名称",
+											title : "年级名称",
 											halign : "center",
 											width : "40%",
 											align:'center',
@@ -137,7 +112,7 @@
 										},
 										{
 											field : "categoryStatus",
-											title : "类别状态",
+											title : "年级状态",
 											halign : "center",
 											width : "40%",
 											align:'center',

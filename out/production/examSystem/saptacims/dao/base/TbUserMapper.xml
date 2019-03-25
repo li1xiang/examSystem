@@ -423,4 +423,10 @@
         <if test="userCname != null"> and USER_CNAME like  '%${userCname}%'  </if>
         	and USER_STATUS = #{userStatus,jdbcType=INTEGER}   
     </select>
+  <select id="getCountStuNo" parameterType="java.lang.String" resultType="int">
+    select count(*) from TB_USER where 1=1
+    <if test="stuNo != null" >
+      and STU_NO = #{stuNo,jdbcType=VARCHAR}
+    </if>
+  </select>
 </mapper>
