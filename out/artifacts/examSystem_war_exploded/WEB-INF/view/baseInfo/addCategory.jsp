@@ -13,19 +13,19 @@
 	<div class="sub-page">
 		<div class="section-a">
 			<div class="section-a-head section-a-head-fixed">
-				<div class="section-a-title h5">类别信息录入</div>
+				<div class="section-a-title h5">年级信息录入</div>
 			</div><!-- section-a-head end -->
 			<div class="section-a-body">
 				<div class="section-f section-f-fixed-800 m-t-10">
 					<div class="section-f-head">
-						<div class="h4">类别信息录入</div>
+						<div class="h4">年级信息录入</div>
 					</div>
 					<!-- section-f-head end -->
 					
 						<div class="section-f-body">
 							<!-- san-row end -->
 							<div class="san-row section-f-row">
-								<div class="san-col-2" align="right">类别名称</div>
+								<div class="san-col-2" align="right">年级名称</div>
 								<div class="san-col-3">
 									<input class="easyui-textbox"
 										style="width: 100%;" id="name" data-options="required:true,validType:'length[0,100]'"> 
