@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class CheckCodeUtil {
 
-	public static String getContent(int size) { 
+	public static String getContent(int size) {
 		  String content = "";   
 		  for(int i=0;i <size;i++){   
 			  content+=getChar();   

@@ -10,7 +10,7 @@
 	<div class="sub-page">
 		<div class="section-a">
 			<div class="section-a-head section-a-head-fixed">
-				<div class="section-a-title h5">题库管理 > 问答题录入 </div>
+				<div class="section-a-title h5">题库管理 > 判断题录入 </div>
 			</div>
 			<!-- section-a-head end -->
 
@@ -90,16 +90,6 @@
 												data-options="multiline:true,height:'100px',validType:'length[0,500]'">
 										</div>
 										<div class="san-col-1"></div>
-									</div>
-									<div class="san-row section-f-row">
-										<div class="san-col-1" align="right">附件</div>
-										<div class="san-col-3">
-											<input id="answerFile" name="answerFile"
-												class="easyui-filebox" style="width: 100%;"
-												data-options="prompt:'上传图片',accept:'image/jpeg,image/png'"
-												buttonText="选择文件">
-										</div>
-										<div class="san-col-8"></div>
 									</div>
 							</div>
 						</div>

@@ -219,12 +219,12 @@
 											align:'center',
 											resizable : false,
 											formatter:function(value,row,index){
-												return row.questionType==0?'主观题':'客观题';  
+												return row.questionType==0?'问答题':row.questionType==0?'选择题':'判断题';
 											}
 										},
 										{
 											field : "categoryId",
-											title : "科目ID",
+											title : "年级ID",
 											halign : "center",
 											width : "10%",
 											align:'center',
@@ -232,7 +232,7 @@
 							   			},
 										{
 											field : "categoryName",
-											title : "科目",
+											title : "年级",
 											halign : "center",
 											width : "10%",
 											align:'center',
@@ -240,7 +240,7 @@
 							   			},
 							   			{
 											field : "groupId",
-											title : "年级ID",
+											title : "科目ID",
 											halign : "center",
 											width : "10%",
 											align:'center',
@@ -248,7 +248,7 @@
 							   			},
 							   			{
 											field : "groupName",
-											title : "年级",
+											title : "科目",
 											halign : "center",
 											width : "10%",
 											align:'center',

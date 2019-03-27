@@ -55,7 +55,7 @@
 			var categoryName = $("#name").val();
 			//console.info("类别名称长度"+categoryName.trim().length);
 			if(categoryName.trim().length>100){
-				showFailureMsgDia("科目长度不能超过100");
+				showFailureMsgDia("年级长度不能超过100");
 				return;
 			}
 			$.post('category/saveCategory',

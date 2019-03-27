@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>年级信息录入</title>
+<title>科目信息录入</title>
 </head>
 <body>
 <%-- <jsp:include page="../common/commonDia.jsp" /> --%>
