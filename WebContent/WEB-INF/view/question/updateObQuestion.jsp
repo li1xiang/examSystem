@@ -48,7 +48,7 @@
 										</select>
 									</div>
 									<div class="san-col-1"></div>
-									<div class="san-col-1" align="right">群组</div>
+									<div class="san-col-1" align="right">年级</div>
 									<div class="san-col-2">
 										<select id="groupId" name="groupId" class="easyui-combobox"
 											style="width: 100%;"

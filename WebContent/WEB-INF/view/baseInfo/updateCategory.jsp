@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改类别信息</title>
+<title>修改科目信息</title>
 </head>
 <body>
 	<%-- <jsp:include page="../common/commonDia.jsp" /> --%>
@@ -18,7 +18,7 @@
 			<div class="section-a-body">
 				<div class="section-f section-f-fixed-800 m-t-10">
 					<div class="section-f-head">
-						<div class="h4">类别信息修改</div>
+						<div class="h4">科目信息修改</div>
 					</div>
 					<!-- section-f-head end -->
 					<form id="modCategory" method="POST" action="">
@@ -26,7 +26,7 @@
 						<div class="section-f-body">
 							<!-- san-row end -->
 							<div class="san-row section-f-row">
-								<div class="san-col-2" align="right">类别名称</div>
+								<div class="san-col-2" align="right">科目名称</div>
 								<div class="san-col-3">
 									<input name="categoryName" class="easyui-textbox"
 										style="width: 100%;" data-options="required:true,validType:'length[1,100]'" value="${category.categoryName}">
@@ -34,7 +34,7 @@
 								</div>
 								<div class="san-col-1"></div>
 								
-								<div class="san-col-2" align="right">类别状态</div>
+								<div class="san-col-2" align="right">科目状态</div>
 								<div class="san-col-3">
 									<select id="categoryStatusMod" name="categoryStatus" class="easyui-combobox"
 										style="width: 100%;">

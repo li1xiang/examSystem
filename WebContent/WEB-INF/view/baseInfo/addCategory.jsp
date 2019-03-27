@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>类别信息录入</title>
+<title>科目信息录入</title>
 </head>
 <body>
 <%-- 	<jsp:include page="../common/commonDia.jsp" /> --%>
@@ -55,7 +55,7 @@
 			var categoryName = $("#name").val();
 			//console.info("类别名称长度"+categoryName.trim().length);
 			if(categoryName.trim().length>100){
-				showFailureMsgDia("类别长度不能超过100");
+				showFailureMsgDia("科目长度不能超过100");
 				return;
 			}
 			$.post('category/saveCategory',

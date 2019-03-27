@@ -6,19 +6,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改群组信息</title>
+<title>修改年级信息</title>
 </head>
 <body>
 	<%-- <jsp:include page="../common/commonDia.jsp" /> --%>
 	<div class="sub-page">
 		<div class="section-a">
 			<div class="section-a-head section-a-head-fixed">
-				<div class="section-a-title h5">群组信息修改</div>
+				<div class="section-a-title h5">年级信息修改</div>
 			</div><!-- section-a-head end -->
 			<div class="section-a-body">
 				<div class="section-f section-f-fixed-800 m-t-10">
 					<div class="section-f-head">
-						<div class="h4">群组信息修改</div>
+						<div class="h4">年级信息修改</div>
 					</div>
 					<!-- section-f-head end -->
 					<form id="modGroup" method="POST" action="">
@@ -26,14 +26,14 @@
 						<div class="section-f-body">
 							<!-- san-row end -->
 							<div class="san-row section-f-row">
-								<div class="san-col-2" align="right">群组名称</div>
+								<div class="san-col-2" align="right">年级名称</div>
 								<div class="san-col-3">
 									<input id="accountMod" name="groupName" class="easyui-textbox"
 										style="width: 100%;" data-options="required:true,validType:'length[1,100]'" value="${group.groupName}"> 
 								</div>
 								<div class="san-col-1"></div>
 								
-								<div class="san-col-2" align="right">群组状态</div>
+								<div class="san-col-2" align="right">年级状态</div>
 								<div class="san-col-3">
 									<select id="groupStatusMod" name="groupStatus" class="easyui-combobox"
 										style="width: 100%;">

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>群组信息录入</title>
+<title>年级信息录入</title>
 </head>
 <body>
 <%-- <jsp:include page="../common/commonDia.jsp" /> --%>
@@ -65,7 +65,7 @@
 			var groupName = $("#name").val().trim();
 			var remark = $("#remark").val().trim();
 			if(groupName.length > 100){
-				showFailureMsgDia("群组名称不能超过100");
+				showFailureMsgDia("年级名称不能超过100");
 				return;
 			}
 			if(remark.length > 255){

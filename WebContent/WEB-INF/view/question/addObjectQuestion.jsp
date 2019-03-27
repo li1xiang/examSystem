@@ -10,7 +10,7 @@
 	<div class="sub-page">
 		<div class="section-a">
 			<div class="section-a-head section-a-head-fixed">
-				<div class="section-a-title h5">题库管理 > 客观题录入 </div>
+				<div class="section-a-title h5">题库管理 > 选择题录入 </div>
 			</div>
 			<!-- section-a-head end -->
 
@@ -26,7 +26,7 @@
 								<div class="san-row section-f-row">
 									<input id="questionType" name="questionType" type="hidden"
 										value=1>
-									<div class="san-col-1" align="right">类别</div>
+									<div class="san-col-1" align="right">年级</div>
 									<div class="san-col-2">
 										<select id="categoryId" name="categoryId"
 											class="easyui-combobox" style="width: 100%;"
@@ -34,7 +34,7 @@
 										</select>
 									</div>
 									<div class="san-col-1"></div>
-									<div class="san-col-1" align="right">群组</div>
+									<div class="san-col-1" align="right">科目</div>
 									<div class="san-col-2">
 										<select id="groupId" name="groupId" class="easyui-combobox"
 											style="width: 100%;"

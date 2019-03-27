@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>群组管理</title>
+<title>年级管理</title>
 </head>
 <body>
 	<%-- <%@ include file="../common/commonDia.jsp" %> --%>
@@ -94,7 +94,7 @@
 								columns : [ [
 										{
 											field : "groupId",
-											title : "类别ID",
+											title : "科目ID",
 											halign : "center",
 											width : "40%",
 											align:'center',

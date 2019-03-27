@@ -50,7 +50,7 @@
 								<input type="hidden" name="subjectImg" id="subjectImg" value="${tbQuestion.subjectImg}" />
 								<input type="hidden" name="delSubjectImg" id="delSubjectImg" value="N"/>
 								<div class="san-row section-f-row">
-									<div class="san-col-1" align="right">类别</div>
+									<div class="san-col-1" align="right">科目</div>
 									<div class="san-col-2">
 										<select id="categoryId" name="categoryId"
 											class="easyui-combobox" style="width: 100%;"
@@ -58,7 +58,7 @@
 										</select>
 									</div>
 									<div class="san-col-1"></div>
-									<div class="san-col-1" align="right">群组</div>
+									<div class="san-col-1" align="right">年级</div>
 									<div class="san-col-2">
 										<select id="groupId" name="groupId" class="easyui-combobox"
 											style="width: 100%;"

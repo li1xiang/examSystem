@@ -40,12 +40,12 @@
 										<p>${questionDetail.questionType==1?'客观题':'主观题'}</p>
 									</div>
 									<div class="san-col-1"></div>
-									<div class="san-col-1" align="right">类别：</div>
+									<div class="san-col-1" align="right">科目：</div>
 									<div class="san-col-2">
 										<p>${questionDetail.categoryName}</p>								
 									</div>
 									<div class="san-col-1"></div>
-									<div class="san-col-1" align="right">群组：</div>
+									<div class="san-col-1" align="right">年级：</div>
 									<div class="san-col-2">
 										<p>${questionDetail.groupName}</p>
 									</div>
