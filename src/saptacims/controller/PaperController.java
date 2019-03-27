@@ -503,7 +503,7 @@ public class PaperController {
 					TbExaminationAnswer option = optionss.get(j);
 					logger.debug(option.getIsright()+"");
 					if(option.getIsright() != null && option.getIsright()==1)
-						answerText = opIndex[j];
+							answerText += opIndex[j];
 				}
 				// boolean resultFlag = false;
 				if (question.getQuestionTitle() != null
