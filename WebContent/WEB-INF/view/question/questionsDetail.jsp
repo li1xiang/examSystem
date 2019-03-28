@@ -37,15 +37,15 @@
 								<div class="san-row section-f-row">
 									<div class="san-col-1" align="right">题型：</div>
 									<div class="san-col-2">
-										<p>${questionDetail.questionType==1?'客观题':'主观题'}</p>
+										<p>${questionDetail.questionType==0?'问答题':questionDetail.questionType==1?'选择题':'判断题'}</p>
 									</div>
 									<div class="san-col-1"></div>
-									<div class="san-col-1" align="right">类别：</div>
+									<div class="san-col-1" align="right">年级：</div>
 									<div class="san-col-2">
 										<p>${questionDetail.categoryName}</p>								
 									</div>
 									<div class="san-col-1"></div>
-									<div class="san-col-1" align="right">群组：</div>
+									<div class="san-col-1" align="right">科目：</div>
 									<div class="san-col-2">
 										<p>${questionDetail.groupName}</p>
 									</div>

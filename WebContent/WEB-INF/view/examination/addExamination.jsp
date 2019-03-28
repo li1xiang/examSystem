@@ -37,11 +37,11 @@
 							<form id="queryForm" >
 								<div class="san-row">
 									<div class="san-col-2">
-										<div>类别</div>
+										<div>年级</div>
 										<input class="easyui-combobox" name="categoryId" id="categoryId" style="width: 100%;">
 									</div>
 									<div class="san-col-2">
-										<div>群组</div>
+										<div>科目</div>
 										<input class="easyui-combobox" name="groupId" id="groupId" style="width: 100%;">
 									</div>
 									<div class="san-col-2">

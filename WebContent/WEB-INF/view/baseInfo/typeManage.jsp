@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>类别管理</title>
+<title>科目管理</title>
 </head>
 <body>
 	<%-- <%@ include file="../common/commonDia.jsp" %> --%>
@@ -211,7 +211,7 @@
 			$('#categoryTable').datagrid('selectRow',index);// 关键在这里  
 			var row = $('#categoryTable').datagrid('getSelected'); 
 			showWindow({
-				title:'修改类别信息',
+				title:'修改科目信息',
 				href:'category/updateCategory?categoryId='+row.categoryId,
 				width:1000,
 				height:'auto'
@@ -225,7 +225,7 @@
 			}); */
 			//window.open("category/addCategory","_blank");
 			showWindow({
-				title:'类别信息录入',
+				title:'科目信息录入',
 				href:'category/addCategory',
 				width:1000,
 				height:'auto'
