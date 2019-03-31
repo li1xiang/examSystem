@@ -10,20 +10,20 @@
 	<div class="sub-page">
 		<div class="section-a">
 			<div class="section-a-head section-a-head-fixed">
-				<div class="section-a-title h5">题库管理 > 问答题录入 </div>
+				<div class="section-a-title h5">题库管理 > 判断题录入 </div>
 			</div>
 			<!-- section-a-head end -->
 
 			<div class="section-a-body">
 				<div class="section-f  m-t-10">
-					<form id="saveQuestion" method="POST" action="" enctype="multipart/form-data">
+					<form id="saveQuestion" method="POST" action="" >
 						<div class="section-f-head">
 							<div class="h4">信息录入</div>
 						</div>
 						<div class="easyui-tabs" data-options="tabWidth:112">
 							<div title="题目录入" style="padding: 10px" class="section-f-body">
 								<div class="san-row section-f-row">
-								<input id="questionType" name="questionType" type="hidden" value=0 >
+								<input id="questionType" name="questionType" type="hidden" value=2 >
 									<div class="san-col-1" align="right">年级</div>
 									<div class="san-col-2">
 										<select id="categoryId" name="categoryId"
@@ -63,44 +63,17 @@
 								<!-- san-row end -->
 								<div class="san-row section-f-row">
 									<div class="san-col-1" align="right">题目</div>
-									<div class="san-col-10">
+									<div class="san-col-7">
 										<input id="subject" name="subject" class="easyui-textbox"
 											style="width: 100%;"
-											data-options="multiline:true,height:'100px',validType:'length[0,500]'">
+											data-options="multiline:true,height:'60px',validType:'length[0,500]'">
+									</div>
+									<div class="san-col-2">
+										<label style="float:left;font-size:12px;"> <input type="radio" style="vertical-align:middle; margin-top:-2px; margin-bottom:1px;" value="1" name="isright" id="isright" >正确  &nbsp;</label>
+										<label style="float:left;font-size:12px;"> <input type="radio" style="vertical-align:middle; margin-top:-2px; margin-bottom:1px;" value="0" name="isright" id="isright" >错误  &nbsp;</label>
 									</div>
 									<div class="san-col-1"></div>
 								</div>
-								<div class="san-row section-f-row">
-									<div class="san-col-1" align="right">附件</div>
-									<div class="san-col-3">
-										<input id="questionFile" name="questionFile"
-											class="easyui-filebox" style="width: 100%;"
-											data-options="prompt:'上传图片',accept:'image/jpeg,image/png'"
-											buttonText="选择文件">
-									</div>
-									<div class="san-col-8"></div>
-								</div>
-							</div>
-							<div title="答案录入" style="padding: 10px" class="section-f-body">
-									<div class="san-row section-f-row">
-										<div class="san-col-1" align="right">答案</div>
-										<div class="san-col-10">
-											<input id="answer" name="answer" class="easyui-textbox"
-												style="width: 100%;"
-												data-options="multiline:true,height:'100px',validType:'length[0,500]'">
-										</div>
-										<div class="san-col-1"></div>
-									</div>
-									<div class="san-row section-f-row">
-										<div class="san-col-1" align="right">附件</div>
-										<div class="san-col-3">
-											<input id="answerFile" name="answerFile"
-												class="easyui-filebox" style="width: 100%;"
-												data-options="prompt:'上传图片',accept:'image/jpeg,image/png'"
-												buttonText="选择文件">
-										</div>
-										<div class="san-col-8"></div>
-									</div>
 							</div>
 						</div>
 					</form>
@@ -125,15 +98,17 @@
 			//初始化新增表单
 			$("#saveQuestion").form(
 					{
-						url : "question/addSubjecQuestion",
+						url : "question/addAddRejumentQuestion",
 						type : "POST",
 						resetForm : true,
 						success : function(data) {
+                            debugger;
 							var result = eval("(" + data + ")");
 							if (result.saveFlag) {
+
 								//成功框确认按钮点击事件
 								showSuccessMsgDia(result.msg,
-										'question/getAddSubjectQuestion');
+										'question/getAddRejumentQuestion');
 							} else {
 								showFailureMsgDia(result.msg);
 							}
@@ -175,11 +150,12 @@
 					showFailureMsgDia("请填写题目或上传一个附件!");
 					return;
 				}*/
+				if($("input:radio[name='isright']:checked").val()==null){
+                    showFailureMsgDia("请填写答案" );
+                    return;
+				}
 				//校验答案
-				if($("#answer").val().trim()==''&&$("#answerFile").filebox('getValue')==''){
-					showFailureMsgDia("请填写答案或上传一个附件!");
-					return;
-				}				//新增表单提交
+								//新增表单提交
 				$("#saveQuestion").form("submit");
 			});
 		});

@@ -120,4 +120,13 @@ public interface IQuestionService {
 	 */
 	public Boolean updateObQuestion(TbQuestion question, String answerTable);
 
+
+	/**
+	 * 新增判断题
+	 * @param question
+	 * @param isright
+	 * @return
+	 */
+	public Boolean  saveRejumentQuestion(TbQuestionView question ,String isright);
+
 }

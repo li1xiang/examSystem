@@ -72,6 +72,8 @@ public class QuestionController {
 		return "question/questionManage";
 	}
 
+	@RequestMapping(value = "/getAddRejumentQuestion")
+	public  String  getAddRejumentQuestion(){ return  "question/getAddRejumentQuestion";}
 	// 题库查询
 	@RequestMapping(value = "/getQuestionSelect")
 	public String getQuestionSelect() {
@@ -402,7 +404,45 @@ public class QuestionController {
 		}
 		return saveJson;
 	}
-	
+
+	/**
+	 * 新增判断题
+	 * @param tbQuestionView
+	 * @param isright
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/addAddRejumentQuestion",method = RequestMethod.POST)
+	@ResponseBody
+	public JSONObject addAddRejumentQuestion(TbQuestionView tbQuestionView,String isright,HttpSession session){
+		JSONObject saveJson = new JSONObject();
+		String questionRealName = "";
+		String questionFilePath = "";
+		try {
+			logger.info("--------新增试题开始--------");
+			//新增试题
+			TbUser currentUser = (TbUser) session.getAttribute("currentUser");
+
+			tbQuestionView.setCreateUser(currentUser.getUserId());
+			tbQuestionView.setUpdateUser(currentUser.getUserId());
+			tbQuestionView.setCreateTime(new Date());
+			tbQuestionView.setUpdateTime(new Date());
+			tbQuestionView.setActive(0);
+
+			Boolean tag = questionService.saveRejumentQuestion(tbQuestionView, isright);
+			if (tag) {
+				//更改题目状态为启用
+				saveJson.put("msg", "保存成功");
+				saveJson.put("saveFlag", true);
+			}
+
+		} catch (Exception e) {
+			saveJson.put("msg", "保存失败");
+			saveJson.put("saveFlag", false);
+			logger.info("保存失败");
+		}
+		return saveJson;
+	}
 	
 	/**
 	 * 获取题目列表
@@ -568,7 +608,6 @@ public class QuestionController {
 	 * 修改题目主观新
 	 * @param file
 	 * @param newQuestion
-	 * @param oldQuestionType
 	 * @param session
 	 * @return
 	 */

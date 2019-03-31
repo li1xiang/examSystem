@@ -266,6 +266,35 @@ public class QuestionServiceImpl implements IQuestionService {
 	    return false;
     }
 
+
+    @Override
+	@Transactional
+    public Boolean  saveRejumentQuestion(TbQuestionView question ,String isright){
+		int num = questionMapper.insertSelective(question);
+		if(num==0){
+			return false;
+		}else{
+			TbAnswer tbAnswer=new TbAnswer();
+			tbAnswer.setQuestionId(question.getQuestionId());
+			tbAnswer.setUpdateUser(question.getUpdateUser());
+			tbAnswer.setUpdateTime(new Date());
+			tbAnswer.setCreateUser(question.getCreateUser());
+			tbAnswer.setCreateTime(new Date());
+			tbAnswer.setIsright(Integer.valueOf(isright));
+			int numb=answerMapper.insertSelective(tbAnswer);
+			if(numb==1){
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+
+
+
+
+
 	@Override
 	@Transactional
     public Boolean updateSubQuestion(TbQuestion question, TbAnswer tbAnswer) {
